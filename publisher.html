@@ -1,0 +1,70 @@
+<html>
+<head>
+
+	<script type="text/javascript" src="http://labatrockwell.github.com/spacebrew-javascript-examples/spacebrew_string/js/jq.js
+"></script>
+
+    <script type="text/javascript" src="sb.js"></script>
+
+    <script type="text/javascript">
+      
+      // when window loads call the setup method
+      $(window).on("load", setup);
+
+      // Variable that will hold the spacebrew client object
+      var sb;
+
+      /**
+       * setup Function that connect to spacebrew and creates a listener for clicks of the submit button.
+       */
+      function setup (){
+        // setup spacebrew
+        sb = new Spacebrew.Client();  // create spacebrew client object
+        sb.description("This app sends the destination of the bought ticket."); // set the app description
+        sb.addPublish("text", "string", "");  // create the publication feed
+        sb.connect();   // connect to spacebrew
+
+        // listen to button clicks
+        $("#button").on("mousedown", onMouseDown);
+      }
+
+      /**
+       * onMouseDown Function that is called when the submit button is pressed. It reads the
+       *     text in the input box, and then sends it to spacebrew. It accepts a mouse event
+       *     object, though we don't use it in this example.
+       */
+      function onMouseDown (evt){
+        var newString = $("#ddl").val();   // load text from input box
+        if (newString !== "") {               // if input box is not blank
+          console.log("Sending message " + newString); 
+          sb.send("text", "string", newString);   // send string to spacebrew
+          $("#string").val("");                   // clear the text box
+          $("#status").text("sent message: " + newString); // display the sent message in the browser         
+        }
+      }
+    </script>
+
+</head>
+
+
+
+
+<body>
+
+<select id="ddl">
+  <option value="Hudson">Hudson</option>
+  <option value="Harlem">Harlem</option>
+  <option value="New Haven">New Haven</option>
+  <option value="Pascack Valley">Pascack Valley</option>
+  <option value="Port Jervis">Port Jervis</option>
+</select>
+<button type="button" id="button">Buy Ticket</button>
+</body>
+
+
+
+</htmll>
+
+
+
+
