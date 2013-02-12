@@ -8,8 +8,12 @@ Spacebrew spacebrewConnection;
 
 int[] destinations = new int[5];
 
+PFont p;
+
 void setup() {
-  size(600, 400);
+  size(700, 400);
+
+  p = loadFont("Edmondsans-Medium-24.vlw");
 
   for (int i = 0; i < destinations.length; i++){
     destinations[i] = 0;
@@ -29,16 +33,32 @@ void setup() {
 }
 
 void draw() {
+  background(25);
 
+  textFont(p, 18);
+
+  fill(255);
+  text("Hudson", 50, height-30);
+  text("Harlem", 180, height-30);
+  text("New Haven", 310, height-30);
+  text("Pascack Valley", 440, height-30);
+  text("Port Jervis", 570, height-30);
+  
+  fill(#CC6699);
   rect(50, height-50-destinations[0]*10, 50, destinations[0]*10);
-
-  rect(150, height-50-destinations[1]*10, 50, destinations[1]*10);
-
-  rect(250, height-50-destinations[2]*10, 50, destinations[2]*10);
-
-  rect(350, height-50-destinations[3]*10, 50, destinations[3]*10);
-
-  rect(450, height-50-destinations[4]*10, 50, destinations[4]*10);
+  
+  fill(#33CCFF);
+  rect(180, height-50-destinations[1]*10, 50, destinations[1]*10);
+  
+  fill(#FFFF66);
+  rect(310, height-50-destinations[2]*10, 50, destinations[2]*10);
+  
+  fill(#99CC66);
+  rect(440, height-50-destinations[3]*10, 50, destinations[3]*10);
+  
+  fill(#9999CC);
+  rect(570, height-50-destinations[4]*10, 50, destinations[4]*10);
+  
 
 }
 
